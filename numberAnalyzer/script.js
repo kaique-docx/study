@@ -1,8 +1,8 @@
-const num = Number(document.getElementById("number").value)
 const res = document.getElementById("res")
 
 function analyseNumber(num){
-    
+    const num = Number(document.getElementById("number").value)
+
     //Positive, Negative or Zero
     let natural = "positive"
     if (num > 0){
