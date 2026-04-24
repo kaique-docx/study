@@ -1,6 +1,6 @@
 const res = document.getElementById("res")
 
-function analyseNumber(num){
+function analyseNumber(){
     const num = Number(document.getElementById("number").value)
 
     //Positive, Negative or Zero
