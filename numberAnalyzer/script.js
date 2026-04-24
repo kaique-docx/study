@@ -1,5 +1,5 @@
-let num = document.getElementById("number").value
-let res = document.getElementById("res")
+const num = Number(document.getElementById("number").value)
+const res = document.getElementById("res")
 
 function analyseNumber(num){
     
