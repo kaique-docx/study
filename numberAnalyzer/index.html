@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Analyser</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        main {
+            margin: auto;
+            padding: 20px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            flex-flow: column wrap;
+            background-color: lightslategrey;
+            width: 90dvw;
+        }
+        h1 {
+            margin: 10px;
+        }
+        input {
+            margin: 10px;
+            width: 20%;
+        }
+        input#botao {
+            padding: 10px;
+            cursor: pointer;
+        }
+        
+
+        
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Put a Number below</h1>
+        <input type="number" name="number" id="number">
+        <input type="submit" value="Analyse" id="botao" onclick="analyseNumber(num)">
+        <div id="res"></div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
