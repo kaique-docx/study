@@ -1,0 +1,142 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <style>
+		* {
+			box-sizing: border-box;
+		}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        main {
+            margin: auto;
+            padding: 20px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            flex-flow: column wrap;
+            background-color: lightslategrey;
+            width: 90dvw;
+        }
+        h1 {
+            margin: 10px;
+        }
+        input {
+			width: 70%;
+            margin: 10px;
+			padding: 8px;
+			border-radius: 10px;
+			border: none;
+			transition: all .3s;
+        }
+		input:focus{
+			box-shadow: 0px 0px 10px white;
+		}
+        button {
+            padding: 10px;
+			border-radius: 10px;
+            cursor: pointer;
+			border: none;
+			transition: all .3s;
+        }
+		button:hover {
+			background-color: darkgray;
+			color: white;
+		}
+		section#res {
+			min-height: 100px;
+			width: 100%;
+			background-color: lightgray;
+			border-radius: 10px;
+			margin-top: 10px;
+			padding: 15px;
+		}
+		div.task {
+			display: flex;
+			flex-flow: row wrap;
+			align-items: center;
+			background-color: #eeeeee;
+			padding: 5px;
+			margin: 5px 0px;
+			border-radius: 8px;
+		}	
+		input[type="checkbox"] {
+			appearance: none;
+    		-webkit-appearance: none;
+    		-moz-appearance: none;
+			aspect-ratio: 1/1;
+			background-color: white;
+			width: 20px;
+			margin: 5px 10px 5px 5px;
+			position: relative;
+			border-radius: 5px;
+		}
+		input[type="checkbox"]:checked{
+			background-color: purple;
+		}
+		input[type="checkbox"]:checked::before {
+			content: '✔'; /* Um ícone para o check */
+			position: absolute;
+			top: -1px;
+			left: 3px;
+			font-size: 16px;
+			color: white;
+		}
+		input[type="checkbox"]:checked + label{
+			text-decoration: line-through;
+			font-style: italic;
+			color: #222222
+		}
+    </style>
+</head>
+<body>
+    <main>
+        <h1>To Do App</h1>
+        <input type="text" name="msg" id="msg">
+		<button onclick="add()">Add task</button>
+        <section id="res">
+        	<div class="task">
+				<input type="checkbox" name="task1" id="task1"><label for="task1">pipipipopopo</label>
+			</div>
+        </section>
+    </main>
+    <script>
+        function add(){
+            const list = document.querySelectorAll(".task").length
+            const text = document.getElementById("msg").value
+            const order = `task${list + 1}`
+            
+            if (text.trim() === "") {
+                alert("Please enter a task!");
+                return;
+            }
+            // === CREATE DIV ===
+            const divTask = document.createElement('div')
+            divTask.classList.add('task')
+            
+            /// === CREATE LABEL ===
+            const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.name = order;
+                checkbox.id = order;
+
+            // === CREATE LABEL ===
+            const label = document.createElement('label');
+                label.setAttribute('for', order);
+                label.textContent = text;
+            
+            divTask.appendChild(checkbox); // Adiciona o checkbox à div
+            divTask.appendChild(label); // Adiciona o label à div
+
+            // === ADD ===
+            document.getElementById('res').appendChild(divTask);
+
+            // Limpa o campo de entrada após adicionar a tarefa
+            document.getElementById("msg").value = "";
+        }
+    </script>
+</body>
+</html>
