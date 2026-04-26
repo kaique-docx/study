@@ -25,6 +25,7 @@
             text-align: center;
             padding: 20px;
             background-color: lightgray;
+            border-radius: 10px;
             width: 100px;
             font-size: 3em;
         }
@@ -47,9 +48,9 @@
 </head>
 <body>
     <main>
-        <h1>Type a short message</h1>
+        <h1>Number Counter</h1>
         <p id="res">0</p>
-        <label for="num">Type a number to add or subtract from the number above.</label>
+        <label for="num">Type a positive number to add or subtract from the number above.</label>
         <input type="number" name="num" id="num">
         <div>
             <input type="submit" value="+" id="sum" onclick="sum()">
@@ -59,15 +60,32 @@
     </main>
     <script>
         function sum(){
-            const num = document.getElementById("num")
-            const res = Number(document.getElementById("res"))
-
-            let sum = num.value + res.value
-
-            if (num < 0){
+            const input = document.getElementById("num")
+            const num = Number(input.value)
+            const output = document.getElementById("res")
+            const res = Number(output.innerText)
+            
+            if (num <= 0 ){
                 alert("Type a positive number!")
             } else {
-                res.innerHTML = sum
+                let sum = res + num
+                output.innerText = sum
+                input.value = ""
+            }
+        }
+
+        function sub(){
+            const input = document.getElementById("num")
+            const num = Number(input.value)
+            const output = document.getElementById("res")
+            const res = Number(output.innerHTML)
+            
+            if (num <= 0 ){
+                alert("Type a positive number!")
+            } else {
+                let sub = res - num
+                output.innerText = sub
+                input.value = ""
             }
         }
     </script>
