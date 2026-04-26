@@ -56,38 +56,23 @@
             <input type="submit" value="+" id="sum" onclick="sum()">
             <input type="submit" value="-" id="sub" onclick="sub()">
         </div>
-        <div id="res"></div>
     </main>
     <script>
-        function sum(){
+        function calc(op){
             const input = document.getElementById("num")
             const num = Number(input.value)
             const output = document.getElementById("res")
-            const res = Number(output.innerText)
+            const res = Number(output.textContent)
             
-            if (num <= 0 ){
+            if (isNaN(num) || num <= 0){
                 alert("Type a positive number!")
-            } else {
-                let sum = res + num
-                output.innerText = sum
-                input.value = ""
+                return
             }
+            
+            output.textContent = op === sum ? res + num : res - num
+            input.value = ""
         }
 
-        function sub(){
-            const input = document.getElementById("num")
-            const num = Number(input.value)
-            const output = document.getElementById("res")
-            const res = Number(output.innerHTML)
-            
-            if (num <= 0 ){
-                alert("Type a positive number!")
-            } else {
-                let sub = res - num
-                output.innerText = sub
-                input.value = ""
-            }
-        }
     </script>
 </body>
 </html>
