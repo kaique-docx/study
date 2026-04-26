@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Message</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        main {
+            margin: auto;
+            padding: 20px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            flex-flow: column wrap;
+            background-color: lightslategrey;
+            width: 90dvw;
+        }
+        h1 {
+            margin: 10px;
+        }
+        input {
+            margin: 10px;
+            width: 20%;
+        }
+        input#botao {
+            padding: 10px;
+            cursor: pointer;
+        }
+        
+
+        
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Type a short message</h1>
+        <input type="text" name="msg" id="msg">
+        <input type="submit" value="Show Message" id="botao" onclick="showMessage()">
+        <div id="res"></div>
+    </main>
+    <script>
+        function showMessage(){
+            const input = document.getElementById("msg")
+
+            if (input.value.trim() !== ""){
+                alert(input.value)
+            } else {
+                alert("Type something, bro.")
+            }
+            input.value = ""
+        }
+    </script>
+</body>
+</html>
