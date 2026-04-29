@@ -114,7 +114,6 @@
         	<div class="task">
 				<input type="checkbox" name="task1" id="task1">
 				<label for="task1">pipipipopopo</label>
-				<button onclick="deleteOne()"></button>
 			</div>
         </section>
     </main>
@@ -164,11 +163,12 @@
 			});
 		}
 
-		function deleteOne(){
+		function clearAll(){
+			const tasks = document.querySelectorAll('div.task')
 			
-		}
-
-		function clear(){
+			tasks.forEach(task => {
+				task.remove();
+			});
 			
 		}
     </script>
