@@ -41,10 +41,19 @@
             cursor: pointer;
 			border: none;
 			transition: all .3s;
+			margin: 0px 5px;
+			font-weight: bold;
         }
 		button:hover {
 			background-color: darkgray;
 			color: white;
+		}
+		button#clear {
+			background-color: red;
+			color: white;
+		}
+		button#clear:hover {
+			background-color: darkred;
 		}
 		section#res {
 			min-height: 100px;
@@ -96,47 +105,72 @@
     <main>
         <h1>To Do App</h1>
         <input type="text" name="msg" id="msg">
-		<button onclick="add()">Add task</button>
-        <section id="res">
+		<div>
+			<button onclick="add()">Add task</button>
+			<button onclick="deleteChecked()">Remove checked</button>
+			<button onclick="clear()" id="clear">Clear</button>
+		</div>
+		<section id="res">
         	<div class="task">
-				<input type="checkbox" name="task1" id="task1"><label for="task1">pipipipopopo</label>
+				<input type="checkbox" name="task1" id="task1">
+				<label for="task1">pipipipopopo</label>
+				<button onclick="deleteOne()"></button>
 			</div>
         </section>
     </main>
     <script>
         function add(){
-            const list = document.querySelectorAll(".task").length
-            const text = document.getElementById("msg").value
-            const order = `task${list + 1}`
-            
-            if (text.trim() === "") {
-                alert("Please enter a task!");
-                return;
-            }
-            // === CREATE DIV ===
-            const divTask = document.createElement('div')
-            divTask.classList.add('task')
-            
-            /// === CREATE LABEL ===
-            const checkbox = document.createElement('input');
-                checkbox.type = 'checkbox';
-                checkbox.name = order;
-                checkbox.id = order;
+			const list = document.querySelectorAll(".task").length
+			const text = document.getElementById("msg").value
+			const order = `task${list + 1}`
 
-            // === CREATE LABEL ===
-            const label = document.createElement('label');
-                label.setAttribute('for', order);
-                label.textContent = text;
-            
-            divTask.appendChild(checkbox); // Adiciona o checkbox à div
-            divTask.appendChild(label); // Adiciona o label à div
+			if (text.trim() === "") {
+				alert("Please enter a task!");
+				return;
+			}
+			// === CREATE DIV ===
+			const divTask = document.createElement('div')
+			divTask.classList.add('task')
 
-            // === ADD ===
-            document.getElementById('res').appendChild(divTask);
+			/// === CREATE LABEL ===
+			const checkbox = document.createElement('input');
+			checkbox.type = 'checkbox';
+			checkbox.name = order;
+			checkbox.id = order;
 
-            // Limpa o campo de entrada após adicionar a tarefa
-            document.getElementById("msg").value = "";
-        }
+			// === CREATE LABEL ===
+			const label = document.createElement('label');
+			label.setAttribute('for', order);
+			label.textContent = text;
+
+			divTask.appendChild(checkbox); // Adiciona o checkbox à div
+			divTask.appendChild(label); // Adiciona o label à div
+
+			// === ADD ===
+			document.getElementById('res').appendChild(divTask);
+
+			// Limpa o campo de entrada após adicionar a tarefa
+			document.getElementById("msg").value = "";
+		}
+
+		function deleteChecked(){
+			const checked = document.querySelectorAll('input[type="checkbox"]:checked')
+			
+			checked.forEach(checkbox => {
+				const task = checkbox.closest('.task');
+				if (task) {
+					task.remove();
+				}
+			});
+		}
+
+		function deleteOne(){
+			
+		}
+
+		function clear(){
+			
+		}
     </script>
 </body>
 </html>
